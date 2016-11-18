@@ -1,5 +1,5 @@
 {
-	"name": "apache-solr-for-typo3/solr",
+	"name": "punktde/solr",
 	"description": "Apache Solr integration for TYPO3",
 	"minimum-stability": "alpha",
 	"license": "GPL-2.0+",
