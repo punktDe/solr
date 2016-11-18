@@ -38,6 +38,9 @@
 	"require-dev": {
 		"typo3-ci/typo3cms": "dev-master"
 	},
+	"replace": {
+		"solr": "*"
+	},
 	"autoload": {
 		"psr-0": {
 			"ApacheSolrForTypo3": "Classes/"
