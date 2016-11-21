@@ -118,7 +118,7 @@ class Tx_Solr_IndexQueue_frontendhelper_PageFieldMappingIndexer implements Tx_So
 
 		if (isset($indexingConfiguration[$solrFieldName . '.'])) {
 				// configuration found => need to resolve a cObj
-			$contentObject = t3lib_div::makeInstance('tslib_cObj');
+			$contentObject = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tslib_cObj');
 			$contentObject->start($pageRecord, 'pages');
 
 			$fieldValue = $contentObject->cObjGetSingle(

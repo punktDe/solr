@@ -151,11 +151,11 @@ class Tx_Solr_Template {
 				// could be FALSE if not matching view helper class was found
 			if ($viewHelperClassName) {
 				try {
-					$helperInstance = t3lib_div::makeInstance($viewHelperClassName, $arguments);
+					$helperInstance = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance($viewHelperClassName, $arguments);
 					$success = $this->addViewHelperObject($helperName, $helperInstance);
 				} catch(Exception $e) {
 					if ($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_solr.']['logging.']['exceptions']) {
-						t3lib_div::devLog('exception while adding a viewhelper', 'solr', 3, array(
+						\TYPO3\CMS\Core\Utility\GeneralUtility::devLog('exception while adding a viewhelper', 'solr', 3, array(
 							$e->__toString()
 						));
 					}
@@ -173,19 +173,19 @@ class Tx_Solr_Template {
 
 		foreach ($this->viewHelperIncludePath as $extensionKey => $viewHelperPath) {
 			$viewHelperRealPath = $viewHelperPath;
-			if (t3lib_div::isFirstPartOfStr($viewHelperPath, 'Classes/')) {
+			if (\TYPO3\CMS\Core\Utility\GeneralUtility::isFirstPartOfStr($viewHelperPath, 'Classes/')) {
 				$viewHelperRealPath = substr($viewHelperPath, 8);
 			}
 			if (substr($viewHelperRealPath, -1) == '/') {
 				$viewHelperRealPath = substr($viewHelperRealPath, 0, -1);
 			}
 
-			$classNamePrefix = t3lib_extMgm::getCN($extensionKey);
+			$classNamePrefix = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getCN($extensionKey);
 
 			$possibleFilename  = Tx_Solr_Util::underscoredToUpperCamelCase($helperKey) . '.php';
 			$possibleClassName = $classNamePrefix . '_' . str_replace('/', '_', $viewHelperRealPath) . '_' . Tx_Solr_Util::underscoredToUpperCamelCase($helperKey);
 
-			$viewHelperIncludePath = t3lib_extMgm::extPath($extensionKey)
+			$viewHelperIncludePath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($extensionKey)
 				. $viewHelperPath . $possibleFilename;
 
 			if (file_exists($viewHelperIncludePath)) {
@@ -435,7 +435,7 @@ class Tx_Solr_Template {
 				$viewHelperContent = $viewHelper->execute($viewHelperArguments);
 			} catch (UnexpectedValueException $e) {
 				if ($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_solr.']['logging.']['exceptions']) {
-					t3lib_div::devLog('Exception while rendering a viewhelper', 'solr', 3, array(
+					\TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Exception while rendering a viewhelper', 'solr', 3, array(
 						$e->__toString()
 					));
 				}

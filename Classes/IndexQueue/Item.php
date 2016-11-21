@@ -151,7 +151,7 @@ class Tx_Solr_IndexQueue_Item {
 	 * @return Tx_Solr_Site Site instance the item belongs to.
 	 */
 	public function getSite() {
-		return t3lib_div::makeInstance('Tx_Solr_Site', $this->rootPageUid);
+		return \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Solr_Site', $this->rootPageUid);
 	}
 
 	public function getType() {

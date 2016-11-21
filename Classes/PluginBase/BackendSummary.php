@@ -40,7 +40,7 @@ class Tx_Solr_PluginBase_BackendSummary {
 	protected function initialize(array $contentElement) {
 		$this->pluginContentElement = $contentElement;
 
-		$flexformAsArray = t3lib_div::xml2array($contentElement['pi_flexform']);
+		$flexformAsArray = \TYPO3\CMS\Core\Utility\GeneralUtility::xml2array($contentElement['pi_flexform']);
 		$this->flexformData = $flexformAsArray['data'];
 	}
 

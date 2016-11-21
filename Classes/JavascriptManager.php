@@ -97,7 +97,7 @@ class Tx_Solr_JavascriptManager {
 			if (!empty($fileReference)) {
 				self::$files[$fileKey] = array(
 					'addedToPage' => FALSE,
-					'file'        => t3lib_div::createVersionNumberedFilename($GLOBALS['TSFE']->tmpl->getFileName($fileReference))
+					'file'        => \TYPO3\CMS\Core\Utility\GeneralUtility::createVersionNumberedFilename($GLOBALS['TSFE']->tmpl->getFileName($fileReference))
 				);
 			}
 		}

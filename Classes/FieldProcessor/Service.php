@@ -67,19 +67,19 @@ class Tx_Solr_FieldProcessor_Service {
 
 				switch ($instruction) {
 					case 'timestampToIsoDate':
-						$processor  = t3lib_div::makeInstance('Tx_Solr_FieldProcessor_TimestampToIsoDate');
+						$processor  = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Solr_FieldProcessor_TimestampToIsoDate');
 						$fieldValue = $processor->process($fieldValue);
 						break;
 					case 'pathToHierarchy':
-						$processor  = t3lib_div::makeInstance('Tx_Solr_FieldProcessor_PathToHierarchy');
+						$processor  = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Solr_FieldProcessor_PathToHierarchy');
 						$fieldValue = $processor->process($fieldValue);
 						break;
 					case 'pageUidToHierarchy':
-						$processor  = t3lib_div::makeInstance('Tx_Solr_FieldProcessor_PageUidToHierarchy');
+						$processor  = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Solr_FieldProcessor_PageUidToHierarchy');
 						$fieldValue = $processor->process($fieldValue);
 						break;
 					case 'categoryUidToHierarchy':
-						$processor = t3lib_div::makeInstance('Tx_Solr_FieldProcessor_CategoryUidToHierarchy');
+						$processor = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Solr_FieldProcessor_CategoryUidToHierarchy');
 						$fieldValue = $processor->process($fieldValue);
 						break;
 					case 'uppercase':

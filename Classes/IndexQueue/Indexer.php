@@ -80,7 +80,7 @@ class Tx_Solr_IndexQueue_Indexer extends Tx_Solr_IndexQueue_AbstractIndexer {
 	 */
 	public function __construct(array $options = array()) {
 		$this->options           = $options;
-		$this->connectionManager = t3lib_div::makeInstance('Tx_Solr_ConnectionManager');
+		$this->connectionManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Solr_ConnectionManager');
 	}
 
 	/**
@@ -184,7 +184,7 @@ class Tx_Solr_IndexQueue_Indexer extends Tx_Solr_IndexQueue_AbstractIndexer {
 		$itemRecord = $item->getRecord();
 
 		if ($language > 0) {
-			$page = t3lib_div::makeInstance('t3lib_pageSelect');
+			$page = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('t3lib_pageSelect');
 			$page->init(FALSE);
 
 			$itemRecord = $page->getRecordOverlay(
@@ -285,8 +285,8 @@ class Tx_Solr_IndexQueue_Indexer extends Tx_Solr_IndexQueue_AbstractIndexer {
 	 * @return Apache_Solr_Document A basic Solr document
 	 */
 	protected function getBaseDocument(Tx_Solr_IndexQueue_Item $item, array $itemRecord) {
-		$site     = t3lib_div::makeInstance('Tx_Solr_Site', $item->getRootPageUid());
-		$document = t3lib_div::makeInstance('Apache_Solr_Document');
+		$site     = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Solr_Site', $item->getRootPageUid());
+		$document = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Apache_Solr_Document');
 		/* @var $document Apache_Solr_Document */
 
 			// required fields
@@ -363,7 +363,7 @@ class Tx_Solr_IndexQueue_Indexer extends Tx_Solr_IndexQueue_AbstractIndexer {
 
 			// same as in the FE indexer
 		if (is_array($fieldProcessingInstructions)) {
-			$service = t3lib_div::makeInstance('Tx_Solr_FieldProcessor_Service');
+			$service = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Solr_FieldProcessor_Service');
 			$service->processDocuments(
 				$documents,
 				$fieldProcessingInstructions
@@ -387,7 +387,7 @@ class Tx_Solr_IndexQueue_Indexer extends Tx_Solr_IndexQueue_AbstractIndexer {
 
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['solr']['IndexQueueIndexer']['indexItemAddDocuments'])) {
 			foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['solr']['IndexQueueIndexer']['indexItemAddDocuments'] as $classReference) {
-				$additionalIndexer = t3lib_div::getUserObj($classReference);
+				$additionalIndexer = \TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($classReference);
 
 				if ($additionalIndexer instanceof Tx_Solr_AdditionalIndexQueueItemIndexer) {
 					$additionalDocuments = $additionalIndexer->getAdditionalItemDocuments($item, $language, $itemDocument);
@@ -420,7 +420,7 @@ class Tx_Solr_IndexQueue_Indexer extends Tx_Solr_IndexQueue_AbstractIndexer {
 
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['solr']['IndexQueueIndexer']['preAddModifyDocuments'])) {
 			foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['solr']['IndexQueueIndexer']['preAddModifyDocuments'] as $classReference) {
-				$documentsModifier = &t3lib_div::getUserObj($classReference);
+				$documentsModifier = &\TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($classReference);
 
 				if ($documentsModifier instanceof Tx_Solr_IndexQueuePageIndexerDocumentsModifier) {
 					$documents = $documentsModifier->modifyDocuments($item, $language, $documents);
@@ -626,7 +626,7 @@ class Tx_Solr_IndexQueue_Indexer extends Tx_Solr_IndexQueue_AbstractIndexer {
 			$logData['status message'] = $response->getHttpStatusMessage();
 		}
 
-		t3lib_div::devLog($message, 'solr', $severity, $logData);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::devLog($message, 'solr', $severity, $logData);
 	}
 }
 

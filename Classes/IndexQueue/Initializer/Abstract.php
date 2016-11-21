@@ -159,7 +159,7 @@ abstract class Tx_Solr_IndexQueue_Initializer_Abstract implements Tx_Solr_IndexQ
 		}
 
 		if ($solrConfiguration['logging.']['indexing.']['indexQueueInitialization']) {
-			t3lib_div::devLog(
+			\TYPO3\CMS\Core\Utility\GeneralUtility::devLog(
 				'Index Queue initialized for indexing configuration ' . $this->indexingConfigurationName,
 				'solr',
 				$logSeverity,
@@ -220,7 +220,7 @@ abstract class Tx_Solr_IndexQueue_Initializer_Abstract implements Tx_Solr_IndexQ
 
 		$additionalPageIds = array();
 		if (!empty($this->indexingConfiguration['additionalPageIds'])) {
-			$additionalPageIds = t3lib_div::intExplode(
+			$additionalPageIds = \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(
 				',',
 				$this->indexingConfiguration['additionalPageIds']
 			);
