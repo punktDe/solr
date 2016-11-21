@@ -510,7 +510,7 @@ class  Tx_Solr_ModuleAdmin extends t3lib_SCbase {
 
 			// SAVE button
 		$buttons['save'] = '<input type="image" class="c-inputButton" name="submit" value="Update"'
-			. t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], 'gfx/savedok.gif', '')
+			. \TYPO3\CMS\Backend\Utility\IconUtility::skinImg($GLOBALS['BACK_PATH'], 'gfx/savedok.gif', '')
 			. ' title="' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.php:rm.saveDoc', 1)
 			. '" />';
 

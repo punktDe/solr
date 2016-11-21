@@ -31,7 +31,7 @@
  * @package	TYPO3
  * @subpackage	solr
  */
-class Tx_Solr_IndexQueue_PageIndexerRequestHandler implements t3lib_Singleton {
+class Tx_Solr_IndexQueue_PageIndexerRequestHandler implements \TYPO3\CMS\Core\SingletonInterface {
 
 	/**
 	 * Index Queue page indexer request.

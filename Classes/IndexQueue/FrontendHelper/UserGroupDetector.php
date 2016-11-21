@@ -37,7 +37,7 @@ class Tx_Solr_IndexQueue_FrontendHelper_UserGroupDetector
 		Tx_Solr_IndexQueue_FrontendHelper_Abstract
 
 	implements
-		t3lib_Singleton,
+		\TYPO3\CMS\Core\SingletonInterface,
 		tslib_content_PostInitHook,
 		t3lib_pageSelect_getPageHook,
 		t3lib_pageSelect_getPageOverlayHook {

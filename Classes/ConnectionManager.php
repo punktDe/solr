@@ -24,7 +24,7 @@
 
 
 if (version_compare(TYPO3_version, '6.1', '<=')) {
-	require_once(PATH_typo3 . 'interfaces/interface.backend_cacheActionsHook.php');
+	require_once(PATH_typo3 . 'interfaces/interface.\TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInterface.php');
 }
 
 /**
@@ -37,7 +37,7 @@ if (version_compare(TYPO3_version, '6.1', '<=')) {
  * @package TYPO3
  * @subpackage solr
  */
-class Tx_Solr_ConnectionManager implements t3lib_Singleton, backend_cacheActionsHook {
+class Tx_Solr_ConnectionManager implements \TYPO3\CMS\Core\SingletonInterface, \TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInterface {
 
 		// TODO add parametrized singleton capabilities to \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance()
 
@@ -302,7 +302,7 @@ class Tx_Solr_ConnectionManager implements t3lib_Singleton, backend_cacheActions
 				'id'    => 'clearSolrConnectionCache',
 				'title' => $title,
 				'href'  => $GLOBALS['BACK_PATH'] . 'ajax.php?ajaxID=solr::clearSolrConnectionCache',
-				'icon'  => '<img '.t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('solr') . 'Resources/Images/cache-init-solr-connections.png', 'width="16" height="16"').' title="'.$title.'" alt="'.$title.'" />'
+				'icon'  => '<img '.\TYPO3\CMS\Backend\Utility\IconUtility::skinImg($GLOBALS['BACK_PATH'], \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('solr') . 'Resources/Images/cache-init-solr-connections.png', 'width="16" height="16"').' title="'.$title.'" alt="'.$title.'" />'
 			);
 			$optionValues[] = 'clearSolrConnectionCache';
 		}

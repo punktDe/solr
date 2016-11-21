@@ -155,7 +155,7 @@ if (TYPO3_MODE == 'BE') {
 		'Tx_Solr_Report_FilterVarStatus'
 	);
 
-	if (t3lib_utility_VersionNumber::convertVersionNumberToInteger(TYPO3_version) < 6000000) {
+	if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < 6000000) {
 		// registering the index report with the reports module
 		$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['reports']['tx_solr']['index'] = array(
 			'title' => 'LLL:EXT:solr/Resources/Private/Language/ModuleReports.xml:index_title',

@@ -30,7 +30,7 @@
  * @package	TYPO3
  * @subpackage	solr
  */
-class Tx_Solr_Search implements t3lib_Singleton {
+class Tx_Solr_Search implements \TYPO3\CMS\Core\SingletonInterface {
 
 	/**
 	 * An instance of the Solr service
@@ -92,7 +92,7 @@ class Tx_Solr_Search implements t3lib_Singleton {
 	/**
 	 * Sets the Solr connection used by this search.
 	 *
-	 * Since Tx_Solr_Search is a t3lib_Singleton, this is needed to
+	 * Since Tx_Solr_Search is a \TYPO3\CMS\Core\SingletonInterface, this is needed to
 	 * be able to switch between multiple cores/connections during
 	 * one request
 	 */
