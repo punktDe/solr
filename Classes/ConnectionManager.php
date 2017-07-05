@@ -420,8 +420,9 @@ class ConnectionManager implements SingletonInterface, ClearCacheActionsHookInte
         // find solr configurations and add them as function menu entries
         foreach ($rootPages as $rootPage) {
             foreach ($languages as $languageId) {
-                $connection = $this->getConfiguredSolrConnectionByRootPage($rootPage,
-                    $languageId);
+                if ($languageId === 0) {
+                    $connection = $this->getConfiguredSolrConnectionByRootPage($rootPage, $languageId);
+                }
 
                 if (!empty($connection)) {
                     $configuredSolrConnections[$connection['connectionKey']] = $connection;
